@@ -75,14 +75,34 @@ Cursor customizado animado
 
 ### Pré-requisitos
 
-- **Delphi 7+** (para compilação)
-- **Windows**
+- **Delphi 7+** ou **RAD Studio XE+** (para desenvolvimento e compilação)
+- **Windows** (VCL é específico para Windows)
 
-### Compilação
+### Opção 1: Compilar com Delphi IDE (Recomendado)
 
 1. Abrir `Emulador.dpr` no Delphi
-2. Compilar (F9)
-3. Executar
+2. Project > Build Emulador (ou pressionar **Shift+F9**)
+3. Run > Run (ou pressionar **F9**)
+4. Executável será gerado em:
+   - Debug: `Win32\Debug\Emulador.exe`
+   - Release: `Win32\Release\Emulador.exe`
+
+### Opção 2: Compilar via Linha de Comando
+
+```bash
+# Com Delphi Command Line Compiler (dcc32.exe)
+dcc32 -B Emulador.dpr
+
+# Com MSBuild (RAD Studio XE2+)
+msbuild Emulador.dproj /t:Build /p:Config=Release
+```
+
+### Opção 3: Executável Pré-compilado
+
+```bash
+# Após compilar, execute diretamente:
+.\Emulador.exe
+```
 
 ### Execução
 
@@ -217,6 +237,59 @@ DataOffset: 0x100
 - ✅ Otimização de loops internos
 - ✅ Interpolação de valores
 - ✅ Manipulação de buffers de vídeo
+
+## ⚙️ Melhorias Implementadas
+
+### ✅ Configuração
+- **EditorConfig** adicionado para encoding UTF-8
+- Configuração de indentação Delphi/Pascal
+- Line endings Windows (CRLF) configurados
+- Tratamento especial para arquivos binários (ROM, BMP, ICO)
+
+### ✅ Documentação
+- README expandido com exemplos de código
+- Algoritmos explicados com código Pascal
+- Múltiplas opções de compilação documentadas
+- Formato de ROM documentado
+- Controles de teclado mapeados
+- Seção técnica de cada efeito
+
+### 🔧 Melhorias Técnicas Possíveis
+
+- [ ] Otimizar com assembly inline para loops críticos
+- [ ] Suporte a DirectX para aceleração de hardware
+- [ ] Adicionar mais efeitos (rotozoomer, metaballs, etc.)
+- [ ] Editor de ROMs gráfico
+- [ ] Exportar efeitos como vídeo (AVI/MP4)
+- [ ] Sincronização com música (demo style)
+- [ ] Suporte a shaders modernos
+- [ ] Modo retro com resolução baixa (320x200)
+
+## 📚 Recursos e Referências
+
+### Demoscene
+- [Pouët.net](https://www.pouet.net/) - Arquivo de demos
+- [256b.com](https://www.256b.com/) - Size-coding
+- [Hugi](http://www.hugi.scene.org/) - Revista demoscene
+
+### Algoritmos Gráficos
+- Fire Effect: [Hugo Elias Tutorial](http://freespace.virgin.net/hugo.elias/models/m_fire.htm)
+- Plasma: [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/plasma.html)
+- Tunnel: [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/tunnel.html)
+
+### Delphi Graphics
+- [VCL Graphics](https://docwiki.embarcadero.com/Libraries/en/Vcl.Graphics)
+- [TBitmap Reference](https://docwiki.embarcadero.com/Libraries/en/Vcl.Graphics.TBitmap)
+- [ScanLine Property](https://docwiki.embarcadero.com/Libraries/en/Vcl.Graphics.TBitmap.ScanLine)
+
+## 🎮 Efeitos Clássicos da Demoscene
+
+Este emulador implementa efeitos icônicos da era de ouro da demoscene:
+
+1. **Fire Effect** - Popularizado por demos do Amiga (1990s)
+2. **Plasma** - Clássico dos demos 4KB/64KB
+3. **Tunnel** - Efeito 3D sem aceleração de hardware
+4. **TV Noise** - Simulação de ruído analógico
 
 ## 👨‍💻 Autor
 
